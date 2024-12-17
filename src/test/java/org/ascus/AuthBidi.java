@@ -14,10 +14,21 @@ public class AuthBidi {
         WebElement searchBar = driver.findElement(By.cssSelector("textarea[name='q']"));
         searchBar.sendKeys("cricketScore");
         searchBar.submit();
-        driver.navigate().refresh();
-        CricketPage cricket = new CricketPage(driver);
-        System.out.println(cricket.firstTeamScore());
-        System.out.println(cricket.secondTeamScore());
+//        driver.navigate().refresh();
+
+        try {
+            CricketPage cricket = new CricketPage(driver);
+            System.out.println(cricket.firstTeamScore());
+            System.out.println(cricket.secondTeamScore());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            driver.quit();
+        }finally {
+            driver.quit();
+        }
+
+
+
     }
 
 }
