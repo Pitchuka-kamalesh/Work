@@ -7,21 +7,13 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
-public class TopBar {
+public class ContactPage {
     WebDriver driver;
-
-    public TopBar(WebDriver driver){
+    public ContactPage(WebDriver driver){
         this.driver = driver;
-        PageFactory.initElements(driver,this);
-
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver,10),this);
     }
 
-    @FindBy(how = How.XPATH,xpath = "//div[@class ='toolbar-area ff  ']")
-    private WebElement topBar;
 
-    public boolean isTopBarVisible(){
-
-        return topBar.isDisplayed();
-    }
 
 }
