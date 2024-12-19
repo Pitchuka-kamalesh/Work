@@ -1,5 +1,6 @@
 package org.ascus.utils;
 
+import org.ascus.reports.ExtentReportManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -44,7 +45,8 @@ public class CommonAction {
         element.sendKeys(value);
     }
     public void scroll(String pixel){
-        String script = "window.scrollBy(0,"+ pixel +")";
+        ExtentReportManager.logInfoDetails("Page is scrolled by " + pixel+"pixels");
+        String script = "window.scrollBy(0,"+ pixel +"); setTimeout(function(){}, 1000);";
         javascriptExecutor.executeScript(script);
     }
 
