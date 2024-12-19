@@ -57,7 +57,7 @@ public class TestListener implements ITestListener {
      */
     @Override
     public void onStart(ITestContext context) {
-        extentReport = ExtentReportManager.createInstance(ExtentReportManager.getReportNameWithTimeStamp(), "TestApiAutomaction", "Api Testing");
+        extentReport = ExtentReportManager.createInstance(ExtentReportManager.getReportNameWithTimeStamp(), "Task1", "Ascus Task");
         TestUtils.launchApp();
     }
     /**
