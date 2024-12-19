@@ -1,4 +1,4 @@
-package org.ascus;
+package org.ascus.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,10 +14,10 @@ public class CommonAction {
     WebDriver driver;
     Wait<WebDriver> wait;
     JavascriptExecutor javascriptExecutor;
-    public CommonAction(WebDriver driver){
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        javascriptExecutor = (JavascriptExecutor) driver;
+    public CommonAction(){
+        this.driver = DriverManager.getDriver();
+        wait = new WebDriverWait( DriverManager.getDriver(), Duration.ofSeconds(20));
+        javascriptExecutor = (JavascriptExecutor)  DriverManager.getDriver();
     }
     public void safeClick(WebElement element){
         spinnerDisappear();
@@ -43,8 +43,9 @@ public class CommonAction {
         clearText(element);
         element.sendKeys(value);
     }
-    public void scroll(){
-            javascriptExecutor.executeScript("window.scrollBy(0,600)");
+    public void scroll(String pixel){
+        String script = "window.scrollBy(0,"+ pixel +")";
+        javascriptExecutor.executeScript(script);
     }
 
 }

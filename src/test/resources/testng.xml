@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name="org.ascus.listners.TestListener" />
+<!--        <listener class-name="com.example.MyMethodInterceptor" />-->
+    </listeners>
     <test verbose="2" preserve-order="true" name="C:/Users/kamal/IdeaProjects/Work/src/test/java/org/ascus/AscusTestCases.java">
         <classes>
-            <class name="org.ascus.AscusTestCases">
-                <methods>
-                    <include name="homePageHeadFooterNavBarDisplayed"/>
-                    <include name="goToAboutPageFromNavBar"/>
-                </methods>
+            <class name="org.ascus.testcases.AscusTestCases">
+
             </class>
         </classes>
     </test>

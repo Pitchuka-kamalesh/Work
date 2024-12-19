@@ -1,6 +1,7 @@
 package org.ascus.pom;
 
-import org.ascus.CommonAction;
+import org.ascus.utils.CommonAction;
+import org.ascus.utils.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,10 +13,10 @@ import java.util.List;
 public class CommonPage {
     WebDriver driver;
     CommonAction action;
-    public CommonPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
-        action = new CommonAction(driver);
+    public CommonPage(){
+        this.driver =  DriverManager.getDriver();
+        PageFactory.initElements( DriverManager.getDriver(),this);
+        action = new CommonAction();
     }
 
     @FindBy(how = How.XPATH,xpath = "//*[@id='reobiz-load']")
@@ -68,5 +69,7 @@ public class CommonPage {
     public boolean isFooterVisible(){return action.isPresent(footer);}
     public void clickDiscovery(){action.safeClick(footerDiscoverButton);}
     public boolean isTopBarDisplayed(){return topBar.isDisplayed();}
+    public boolean isNavBarDisplayed(){return navBar.isDisplayed();}
+    public boolean isFooterDisplayed(){return footer.isDisplayed();}
 
 }

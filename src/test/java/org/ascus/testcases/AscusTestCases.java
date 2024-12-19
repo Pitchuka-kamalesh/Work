@@ -1,32 +1,25 @@
-package org.ascus;
+package org.ascus.testcases;
 
+import org.ascus.utils.CommonAction;
 import org.ascus.pom.*;
+import org.ascus.utils.DriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class AscusTestCases {
-    WebDriver driver;
+public class AscusTestCases extends BaseTest {
     HomePage page;
     ContactPage contactPage;
     AboutPage aboutPage;
     CommonAction commonAction;
+
     @BeforeClass
-    public void setUp(){
-        driver = new EdgeDriver();
-        driver.get("https://ascustech.in/");
-        driver.manage().window().maximize();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        page = new HomePage(driver);
-        contactPage = new ContactPage(driver);
-        aboutPage = new AboutPage(driver);
-        commonAction = new CommonAction(driver);
+    public void loadPages(){
+        page = new HomePage();
+        contactPage = new ContactPage();
+        aboutPage = new AboutPage();
+        commonAction = new CommonAction();
 
     }
 
@@ -37,9 +30,8 @@ public class AscusTestCases {
         Assert.assertTrue(page.isNarBarVisible(),"NavBar is not displayed in HomePage");
         Assert.assertTrue(page.isTopBarVisible(),"TopBar is not displayed in HomePage");
         Assert.assertTrue(page.isFooterVisible(),"Footer is not displayed in HomePage");
-        commonAction.scroll();
+        commonAction.scroll("600");
         Assert.assertFalse(page.isTopBarDisplayed(),"TopBar is present when scroll");
-        page.clickDiscovery();
 
 
     }
@@ -52,9 +44,9 @@ public class AscusTestCases {
         Assert.assertTrue(aboutPage.isNarBarVisible(),"NavBar is not displayed in about page");
         Assert.assertTrue(aboutPage.isTopBarVisible(),"TopBar is not displayed in about page");
         Assert.assertTrue(aboutPage.isFooterVisible(),"Footer is not displayed in about page");
-        aboutPage.clickDiscovery();
+
     }
-    @Test
+    @Test(priority = 2)
     public void goToContactPage(){
         page.clickContactPage();
         System.out.println(contactPage.getURl());
@@ -64,8 +56,5 @@ public class AscusTestCases {
         contactPage.clickDiscovery();
     }
 
-    @AfterClass
-    public void tearDown(){
-        driver.quit();
-    }
+
 }
