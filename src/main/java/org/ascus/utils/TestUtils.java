@@ -17,7 +17,7 @@ public class TestUtils {
      */
     public static void startBrowser() {
         log.info("TestUtils.startBrowser()");
-        DriverManager.setDriver(ThreadGuard.protect(DriverFactory.getBrowserDriver("edge")));
+        DriverManager.setDriver(ThreadGuard.protect(DriverFactory.getBrowserDriver("firefox")));
     }
     /**
      * Launches the application by maximizing the window and navigating to the specified URL.
