@@ -16,14 +16,7 @@ public class HomePage extends CommonPage {
     }
 
 
-    @FindBy(how = How.XPATH,xpath = "")
-    private  WebElement getStarted;
-
-    @FindBy(how = How.XPATH,xpath = "")
-    private WebElement watchVideo;
-
-
-
-
-
+    @FindBy(how = How.XPATH,xpath = "//a[@class='rs-layer rev-btn']")
+    private  WebElement getInTouchButton;
+    
 }
